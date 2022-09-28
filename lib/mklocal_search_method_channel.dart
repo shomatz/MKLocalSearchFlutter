@@ -11,7 +11,12 @@ class MethodChannelMklocalSearch extends MklocalSearchPlatform {
     final jsonResponse = await methodChannel.invokeMethod<String?>(
         'naturalLanguageQuery', query);
     if (jsonResponse != null && jsonResponse.isNotEmpty) {
-      return MklocalSearchResponse.fromJson(json.decode(jsonResponse));
+      try {
+        return MklocalSearchResponse.fromJson(json.decode(jsonResponse));
+      } catch (e) {
+        log(e.toString());
+        return null;
+      }
     }
     return null;
   }
