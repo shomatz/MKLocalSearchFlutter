@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - mklocal_search (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - mklocal_search (from `.symlinks/plugins/mklocal_search/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  mklocal_search:
+    :path: ".symlinks/plugins/mklocal_search/ios"
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  mklocal_search: 51459d4c323601c9e1e93f8c74b2392a13fbc2e9
+
+PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
+
+COCOAPODS: 1.11.3

@@ -1,7 +1,10 @@
-library mklocal_search;
+import 'package:mklocal_search/models/mklocal_search_resonse.dart';
+import 'mklocal_search_platform_interface.dart';
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
+export 'package:mklocal_search/models/mklocal_search_resonse.dart';
+
+class MklocalSearch {
+  Future<MklocalSearchResonse?> naturalLanguageQuery(String query) {
+    return MklocalSearchPlatform.instance.naturalLanguageQuery(query);
+  }
 }
