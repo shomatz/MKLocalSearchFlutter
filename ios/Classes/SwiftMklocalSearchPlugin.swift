@@ -48,7 +48,7 @@ public class SwiftMklocalSearchPlugin: NSObject, FlutterPlugin {
     }
     
     private func getResponse(_ result:MKLocalSearch.Response) -> String{
-        let encodableResponse:MklocalSearchResonse = MklocalSearchResonse(mapItems: result.mapItems,boundingRegion: result.boundingRegion);
+        let encodableResponse:MklocalSearchResponse = MklocalSearchResponse(mapItems: result.mapItems,boundingRegion: result.boundingRegion);
         let encoder = JSONEncoder();
         encoder.outputFormatting = .prettyPrinted;
         let encodedData = try! encoder.encode(encodableResponse);

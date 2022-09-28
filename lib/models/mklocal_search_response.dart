@@ -1,13 +1,12 @@
-import 'bounding_region.dart';
-import 'map_item.dart';
+part of mklocal_search;
 
-class MklocalSearchResonse {
+class MklocalSearchResponse {
   List<MapItem>? mapItems;
   BoundingRegion? boundingRegion;
 
-  MklocalSearchResonse({this.mapItems, this.boundingRegion});
+  MklocalSearchResponse({this.mapItems, this.boundingRegion});
 
-  MklocalSearchResonse.fromJson(Map<String, dynamic> json) {
+  MklocalSearchResponse.fromJson(Map<String, dynamic> json) {
     if (json['mapItems'] != null) {
       mapItems = <MapItem>[];
       json['mapItems'].forEach((v) {

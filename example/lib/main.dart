@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  MklocalSearchResonse? searchResonse = null;
+  MklocalSearchResponse? searchResonse = null;
   final _mklocalSearchPlugin = MklocalSearch();
 
   @override
@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    MklocalSearchResonse? _searchResonse;
+    MklocalSearchResponse? _searchResonse;
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
@@ -75,42 +75,74 @@ class _MyAppState extends State<MyApp> {
                   Text("Website:"),
                   Text(searchResonse?.mapItems?[index].url ?? ""),
                   Text("Placemark data:"),
-
                   Text("Country:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.country??""),
+                  Text(
+                      searchResonse?.mapItems?[index].placemark?.country ?? ""),
                   Text("Country code:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.isoCountryCode??""),
+                  Text(searchResonse
+                          ?.mapItems?[index].placemark?.isoCountryCode ??
+                      ""),
                   Text("Postal code:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.postalCode??""),
+                  Text(searchResonse?.mapItems?[index].placemark?.postalCode ??
+                      ""),
                   Text("Administrative area:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.administrativeArea??""),
+                  Text(searchResonse
+                          ?.mapItems?[index].placemark?.administrativeArea ??
+                      ""),
                   Text("Locality:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.locality??""),
+                  Text(searchResonse?.mapItems?[index].placemark?.locality ??
+                      ""),
                   Text("Thoroughfare:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.thoroughfare??""),
+                  Text(
+                      searchResonse?.mapItems?[index].placemark?.thoroughfare ??
+                          ""),
                   Text("Sub thoroughfare:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.subThoroughfare??""),
+                  Text(searchResonse
+                          ?.mapItems?[index].placemark?.subThoroughfare ??
+                      ""),
                   Text("Name:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.name??""),
-
+                  Text(searchResonse?.mapItems?[index].placemark?.name ?? ""),
                   Text("Location data:"),
                   Text("Latitude:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.location?.coordinate?.latitude .toString()??""),
+                  Text(searchResonse?.mapItems?[index].placemark?.location
+                          ?.coordinate?.latitude
+                          .toString() ??
+                      ""),
                   Text("Longitude:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.location?.coordinate?.longitude.toString()??""),
+                  Text(searchResonse?.mapItems?[index].placemark?.location
+                          ?.coordinate?.longitude
+                          .toString() ??
+                      ""),
                   Text("Altitude:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.location?.altitude.toString()??""),
+                  Text(searchResonse
+                          ?.mapItems?[index].placemark?.location?.altitude
+                          .toString() ??
+                      ""),
                   Text("Horizontal accuracy:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.location?.horizontalAccuracy.toString()??""),
+                  Text(searchResonse?.mapItems?[index].placemark?.location
+                          ?.horizontalAccuracy
+                          .toString() ??
+                      ""),
                   Text("Vertical accuracy:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.location?.verticalAccuracy.toString()??""),
+                  Text(searchResonse?.mapItems?[index].placemark?.location
+                          ?.verticalAccuracy
+                          .toString() ??
+                      ""),
                   Text("Speed:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.location?.speed.toString()??""),
+                  Text(searchResonse
+                          ?.mapItems?[index].placemark?.location?.speed
+                          .toString() ??
+                      ""),
                   Text("Course:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.location?.course.toString()??""),
+                  Text(searchResonse
+                          ?.mapItems?[index].placemark?.location?.course
+                          .toString() ??
+                      ""),
                   Text("Timestamp:"),
-                  Text(searchResonse?.mapItems?[index].placemark?.location?.timestamp.toString()??""),
-                  
+                  Text(searchResonse
+                          ?.mapItems?[index].placemark?.location?.timestamp
+                          .toString() ??
+                      ""),
                 ]));
               },
             ),

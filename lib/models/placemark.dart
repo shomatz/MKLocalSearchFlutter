@@ -1,4 +1,4 @@
-import 'package:mklocal_search/models/location.dart';
+part of mklocal_search;
 
 class Placemark {
   Location? location;
@@ -22,9 +22,8 @@ class Placemark {
       this.name,
       this.isoCountryCode});
   Placemark.fromJson(Map<String, dynamic> json) {
-    location = json['location'] != null
-        ? Location.fromJson(json['location'])
-        : null;
+    location =
+        json['location'] != null ? Location.fromJson(json['location']) : null;
     locality = json['locality'];
     country = json['country'];
     postalCode = json['postalCode'];

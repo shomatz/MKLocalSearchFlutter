@@ -1,7 +1,4 @@
-import 'package:mklocal_search/models/mklocal_search_resonse.dart';
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-
-import 'mklocal_search_method_channel.dart';
+part of mklocal_search;
 
 abstract class MklocalSearchPlatform extends PlatformInterface {
   /// Constructs a MklocalSearchPlatform.
@@ -24,7 +21,7 @@ abstract class MklocalSearchPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<MklocalSearchResonse?> naturalLanguageQuery(String query) {
+  Future<MklocalSearchResponse?> naturalLanguageQuery(String query) {
     throw UnimplementedError('mklocalSearch() has not been implemented.');
   }
 }

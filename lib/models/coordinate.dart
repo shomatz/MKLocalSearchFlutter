@@ -1,3 +1,5 @@
+part of mklocal_search;
+
 class Coordinate {
   double? longitude;
   double? latitude;

@@ -1,4 +1,4 @@
-import 'package:mklocal_search/models/placemark.dart';
+part of mklocal_search;
 
 class MapItem {
   Placemark? placemark;

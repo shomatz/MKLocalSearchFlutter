@@ -1,3 +1,5 @@
+part of mklocal_search;
+
 class Span {
   double? latitudeDelta;
   double? longitudeDelta;

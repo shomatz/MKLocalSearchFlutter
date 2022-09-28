@@ -1,5 +1,5 @@
 //
-//  MklocalSearchResonse.swift
+//  MklocalSearchResponse.swift
 //  mklocal_search
 //
 //  Created by Jonathan Eduardo Garcia Garcia on 27/09/22.

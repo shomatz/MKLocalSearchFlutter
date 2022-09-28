@@ -1,4 +1,4 @@
-import 'coordinate.dart';
+part of mklocal_search;
 
 class Location {
   int? verticalAccuracy;

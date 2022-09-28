@@ -1,10 +1,4 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-
-import 'mklocal_search_platform_interface.dart';
-import 'models/mklocal_search_resonse.dart';
+part of mklocal_search;
 
 /// An implementation of [MklocalSearchPlatform] that uses method channels.
 class MethodChannelMklocalSearch extends MklocalSearchPlatform {
@@ -13,11 +7,11 @@ class MethodChannelMklocalSearch extends MklocalSearchPlatform {
   final methodChannel = const MethodChannel('mklocal_search');
 
   @override
-  Future<MklocalSearchResonse?> naturalLanguageQuery(String query) async {
+  Future<MklocalSearchResponse?> naturalLanguageQuery(String query) async {
     final jsonResponse = await methodChannel.invokeMethod<String?>(
         'naturalLanguageQuery', query);
     if (jsonResponse != null && jsonResponse.isNotEmpty) {
-      return MklocalSearchResonse.fromJson(json.decode(jsonResponse));
+      return MklocalSearchResponse.fromJson(json.decode(jsonResponse));
     }
     return null;
   }

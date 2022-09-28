@@ -1,6 +1,4 @@
-import 'package:mklocal_search/models/span.dart';
-
-import 'coordinate.dart';
+part of mklocal_search;
 
 class BoundingRegion {
   Coordinate? center;
