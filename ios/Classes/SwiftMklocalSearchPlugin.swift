@@ -16,8 +16,11 @@ public class SwiftMklocalSearchPlugin: NSObject, FlutterPlugin {
           {
               result("Natural query string must not be nil");
           }
-          let query:String=String(describing:call.arguments!);
-          naturalLanguageQuery(query,flutterResult: result);
+          let args = call.arguments as! Dictionary<String, Any>
+          let query:String = args["query"] as! String
+          let regionJson = args["region"] as! Dictionary<String, Any>
+          
+          naturalLanguageQuery(query, regionJson: regionJson, flutterResult: result);
           return;
       default:
           result("Invalid flutter call invokeMethod name");
@@ -25,17 +28,27 @@ public class SwiftMklocalSearchPlugin: NSObject, FlutterPlugin {
   }
     
 
-    private func naturalLanguageQuery(_ query:String,flutterResult: @escaping FlutterResult) {
+    private func naturalLanguageQuery(_ query:String,regionJson: Dictionary<String, Any>,flutterResult: @escaping FlutterResult) {
         if(query.isEmpty){
             flutterResult("Natural query string must not be empty");
             return;
         }
-        var region:MapKit.MKCoordinateRegion?=nil;
+        let centerJson = regionJson["center"] as! Dictionary<String, Any>
+        let spanJson = regionJson["span"] as! Dictionary<String, Any>
+        
+        let latitude = centerJson["latitude"] as! Double
+        let longitude = centerJson["longitude"] as! Double
+        let latitudeDelta = spanJson["latitudeDelta"] as! Double
+        let longitudeDelta = spanJson["longitudeDelta"] as! Double
+        
+        let center = MapKit.CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let span = MapKit.MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
+        let region = MapKit.MKCoordinateRegion(center: center, span: span)
+        
             let request = MKLocalSearch.Request();
             request.naturalLanguageQuery = query;
-        if let r:MapKit.MKCoordinateRegion = region {
-                request.region=r;
-            }
+            request.region=region;
+            
             let search = MKLocalSearch(request: request);
             search.start(completionHandler: {_result,_error in
                 if let result=_result{
@@ -48,6 +61,7 @@ public class SwiftMklocalSearchPlugin: NSObject, FlutterPlugin {
     }
     
     private func getResponse(_ result:MKLocalSearch.Response) -> String{
+        
         let encodableResponse:MklocalSearchResponse = MklocalSearchResponse(mapItems: result.mapItems,boundingRegion: result.boundingRegion);
         let encoder = JSONEncoder();
         encoder.outputFormatting = .prettyPrinted;

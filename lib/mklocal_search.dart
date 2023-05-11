@@ -19,7 +19,8 @@ part 'models/span.dart';
 part 'models/bounding_region.dart';
 
 class MklocalSearch {
-  Future<MklocalSearchResponse?> naturalLanguageQuery(String query) {
-    return MklocalSearchPlatform.instance.naturalLanguageQuery(query);
+  Future<MklocalSearchResponse?> naturalLanguageQuery(
+      String query, BoundingRegion region) {
+    return MklocalSearchPlatform.instance.naturalLanguageQuery(query, region);
   }
 }

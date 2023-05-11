@@ -7,9 +7,15 @@ class MethodChannelMklocalSearch extends MklocalSearchPlatform {
   final methodChannel = const MethodChannel('mklocal_search');
 
   @override
-  Future<MklocalSearchResponse?> naturalLanguageQuery(String query) async {
+  Future<MklocalSearchResponse?> naturalLanguageQuery(
+      String query, BoundingRegion region) async {
     final jsonResponse = await methodChannel.invokeMethod<String?>(
-        'naturalLanguageQuery', query);
+      'naturalLanguageQuery',
+      {
+        'query': query,
+        'region': region.toJson(),
+      },
+    );
     if (jsonResponse != null && jsonResponse.isNotEmpty) {
       try {
         return MklocalSearchResponse.fromJson(json.decode(jsonResponse));

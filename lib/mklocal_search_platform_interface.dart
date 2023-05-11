@@ -21,7 +21,8 @@ abstract class MklocalSearchPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<MklocalSearchResponse?> naturalLanguageQuery(String query) {
+  Future<MklocalSearchResponse?> naturalLanguageQuery(
+      String query, BoundingRegion region) {
     throw UnimplementedError('mklocalSearch() has not been implemented.');
   }
 }
