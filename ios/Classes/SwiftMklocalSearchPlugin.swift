@@ -45,24 +45,24 @@ public class SwiftMklocalSearchPlugin: NSObject, FlutterPlugin {
         let span = MapKit.MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
         let region = MapKit.MKCoordinateRegion(center: center, span: span)
         
-            let request = MKLocalSearch.Request();
-            request.naturalLanguageQuery = query;
-            request.region=region;
-            
-            let search = MKLocalSearch(request: request);
-            search.start(completionHandler: {_result,_error in
-                if let result=_result{
-                    let json:String=self.getResponse(result);
-                    flutterResult(json);
-                }else if let error=_error{
-                    flutterResult("Unexpected error: \(error).");
-                }
-            });
+        let request = MKLocalSearch.Request();
+        request.naturalLanguageQuery = query;
+        request.region = region;
+        
+        let search = MKLocalSearch(request: request);
+        search.start(completionHandler: {_result,_error in
+            if let result = _result{
+                let json:String = self.getResponse(result, defaultRegion: region);
+                flutterResult(json);
+            } else if let error = _error{
+                flutterResult("Unexpected error: \(error).");
+            }
+        });
     }
     
-    private func getResponse(_ result:MKLocalSearch.Response) -> String{
+    private func getResponse(_ result:MKLocalSearch.Response, defaultRegion: MapKit.MKCoordinateRegion) -> String{
         
-        let encodableResponse:MklocalSearchResponse = MklocalSearchResponse(mapItems: result.mapItems,boundingRegion: result.boundingRegion);
+        let encodableResponse:MklocalSearchResponse = MklocalSearchResponse(mapItems: result.mapItems, boundingRegion: defaultRegion);
         let encoder = JSONEncoder();
         encoder.outputFormatting = .prettyPrinted;
         let encodedData = try! encoder.encode(encodableResponse);
